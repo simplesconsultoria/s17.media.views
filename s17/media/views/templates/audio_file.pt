@@ -41,9 +41,9 @@
     <a href=""
        style="display:block;width:750px;height:30px;"
 	   id="audio"
-	   tal:attributes="href python:context.absolute_url()">
+	   tal:attributes="href python:context.absolute_url()+'?e=.mp3'">
     </a>
     </tal:main-macro>
-</metal:main> 
+</metal:main>
 </body>
 </html>
