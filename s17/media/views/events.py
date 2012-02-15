@@ -9,5 +9,5 @@ def set_default_layout(obj, event):
     if ct:
         if 'video' in ct:
             obj.setLayout('video_file')
-        if 'audio' in ct:
+        elif 'audio' in ct:
             obj.setLayout('audio_file')

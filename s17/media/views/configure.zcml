@@ -20,9 +20,4 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <!-- -*- extra stuff goes here -*- -->
-
-  <plone:static
-      directory="resources"
-      type="theme"
-  />
 </configure>

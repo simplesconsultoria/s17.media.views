@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="s17.media.views">
+<head>
+    <metal:javascriptslot fill-slot="javascript_head_slot" tal:define="navroot context/@@plone_portal_state/navigation_root_url">
+        <script type="text/javascript" tal:attributes="src string:${navroot}/++resource++s17.media.views/flowplayer/flowplayer-3.2.6.min.js"></script>
+        <script language="JavaScript">
+            $(document).ready(function() {
+                // install flowplayer into container
+                flowplayer("audio", "++resource++s17.media.views/flowplayer/flowplayer-3.2.7.swf", {
+
+	                // fullscreen button not needed here
+	                plugins: {
+		                controls: {
+			                fullscreen: false,
+			                height: 30,
+			                autoHide: false
+		                }
+	                },
+
+	                clip: {
+		                autoPlay: false,
+
+		                // optional: when playback starts close the first audio playback
+		                onBeforeBegin: function() {
+			                $f("player").close();
+		                }
+	                }
+                });
+            });
+        </script>
+    </metal:javascriptslot>
+</head>
+<body>
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+    <a href=""
+       style="display:block;width:750px;height:30px;"
+	   id="audio"
+	   tal:attributes="href python:context.absolute_url()">
+    </a>
+    </tal:main-macro>
+</metal:main> 
+</body>
+</html>
