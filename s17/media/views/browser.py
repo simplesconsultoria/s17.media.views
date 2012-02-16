@@ -5,6 +5,11 @@ from Acquisition import aq_inner
 
 grok.templatedir("templates")
 
+class IVideo(Interface):
+    """Video archive"""
+
+class IAudio(Interface):
+    """Audio archive"""
 
 class VideoView(grok.View):
     grok.context(Interface)
