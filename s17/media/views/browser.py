@@ -18,9 +18,14 @@ class VideoView(grok.View):
     grok.template('video_file')
     grok.require("zope2.View")
 
-
 class AudioView(grok.View):
     grok.context(Interface)
     grok.name("audio_file")
     grok.template('audio_file')
+    grok.require("zope2.View")
+
+class FlashView(grok.View):
+    grok.context(Interface)
+    grok.name("flash_file")
+    grok.template('flash_file')
     grok.require("zope2.View")
