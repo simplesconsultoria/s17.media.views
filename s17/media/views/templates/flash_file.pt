@@ -50,14 +50,6 @@
 </p>
 
 
-        <object tal:attributes="data python:context.absolute_url()"
-                                type="application/x-shockwave-flash" width="100%">
-            <param name="movie" tal:attributes="value python:context.absolute_url()"/>
-            <param name="bgcolor" value="#ffffff" />
-
-        </object>
-
-
 
 
         <div metal:use-macro="here/document_relateditems/macros/relatedItems">
