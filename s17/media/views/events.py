@@ -18,6 +18,7 @@ def set_media_layout(obj, event):
         elif 'audio' in ct and obj.getFilename().split('.')[-1].lower() == 'mp3':
             obj.setLayout('audio_file')
             alsoProvides(obj, IAudio)
+        obj.reindexObject(idxs=['object_provides'])
 
 
 @grok.subscribe(IATFile, IObjectEditedEvent)
@@ -48,3 +49,4 @@ def set_media_modification_layout(obj, event):
                 noLongerProvides(obj, IVideo)
             if IAudio.providedBy(obj):
                 noLongerProvides(obj, IAudio)
+        obj.reindexObject(idxs=['object_provides'])
