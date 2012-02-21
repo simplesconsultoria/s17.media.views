@@ -6,11 +6,18 @@ from zope.interface import Interface
 
 grok.templatedir("templates")
 
+
 class IVideo(Interface):
     """Video archive"""
 
+
 class IAudio(Interface):
     """Audio archive"""
+
+
+class IFlash(Interface):
+    """Flash archive"""
+
 
 class VideoView(grok.View):
     grok.context(Interface)
@@ -18,11 +25,13 @@ class VideoView(grok.View):
     grok.template('video_file')
     grok.require("zope2.View")
 
+
 class AudioView(grok.View):
     grok.context(Interface)
     grok.name("audio_file")
     grok.template('audio_file')
     grok.require("zope2.View")
+
 
 class FlashView(grok.View):
     grok.context(Interface)

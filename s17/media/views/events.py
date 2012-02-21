@@ -6,7 +6,8 @@ from Products.Archetypes.interfaces.event import IObjectEditedEvent
 
 from zope.interface import alsoProvides, noLongerProvides
 
-from s17.media.views.browser import IVideo, IAudio
+from s17.media.views.browser import IVideo, IAudio, IFlash
+
 
 @grok.subscribe(IATFile, IObjectInitializedEvent)
 def set_media_layout(obj, event):
@@ -18,6 +19,9 @@ def set_media_layout(obj, event):
         elif 'audio' in ct and obj.getFilename().split('.')[-1].lower() == 'mp3':
             obj.setLayout('audio_file')
             alsoProvides(obj, IAudio)
+        elif 'flash' in ct:
+            obj.setLayout('flash_file')
+            alsoProvides(obj, IFlash)
         obj.reindexObject(idxs=['object_provides'])
 
 
@@ -32,6 +36,9 @@ def set_media_modification_layout(obj, event):
             if IAudio.providedBy(obj):
                 noLongerProvides(obj, IAudio)
 
+            if IFlash.providedBy(obj):
+                noLongerProvides(obj, IFlash)
+
             if not IVideo.providedBy(obj):
                 alsoProvides(obj, IVideo)
 
@@ -40,8 +47,22 @@ def set_media_modification_layout(obj, event):
             if IVideo.providedBy(obj):
                 noLongerProvides(obj, IVideo)
 
+            if IFlash.providedBy(obj):
+                noLongerProvides(obj, IFlash)
+
             if not IAudio.providedBy(obj):
                 alsoProvides(obj, IAudio)
+
+        elif 'flash' in ct and layout != 'flash_file':
+            obj.setLayout('flash_file')
+            if IVideo.providedBy(obj):
+                noLongerProvides(obj, IVideo)
+
+            if IAudio.providedBy(obj):
+                noLongerProvides(obj, IAudio)
+
+            if not IFlash.providedBy(obj):
+                alsoProvides(obj, IFlash)
 
         elif layout != 'file_view':
             obj.setLayout('file_view')
@@ -49,4 +70,6 @@ def set_media_modification_layout(obj, event):
                 noLongerProvides(obj, IVideo)
             if IAudio.providedBy(obj):
                 noLongerProvides(obj, IAudio)
+            if IFlash.providedBy(obj):
+                noLongerProvides(obj, IFlash)
         obj.reindexObject(idxs=['object_provides'])
