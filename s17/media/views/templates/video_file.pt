@@ -7,7 +7,6 @@
       i18n:domain="s17.media.views">
 <head>
     <metal:javascriptslot fill-slot="javascript_head_slot" tal:define="navroot context/@@plone_portal_state/navigation_root_url">
-        <script type="text/javascript" tal:attributes="src string:${navroot}/++resource++s17.media.views/flowplayer/flowplayer-3.2.6.min.js"></script>
         <script language="JavaScript">
             $(document).ready(function() {
                 flowplayer("player", "++resource++s17.media.views/flowplayer/flowplayer-3.2.7.swf");
