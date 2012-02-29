@@ -9,7 +9,12 @@
     <metal:javascriptslot fill-slot="javascript_head_slot" tal:define="navroot context/@@plone_portal_state/navigation_root_url">
         <script language="JavaScript">
             $(document).ready(function() {
-                flowplayer("player", "++resource++s17.media.views/flowplayer/flowplayer-3.2.7.swf");
+                flowplayer("player", "++resource++s17.media.views/flowplayer/flowplayer-3.2.7.swf", {
+	                clip: {
+		                autoPlay: false,
+		                }
+	                }
+                });
             });
         </script>
     </metal:javascriptslot>
@@ -37,7 +42,6 @@
         </p>
 
         <div tal:replace="structure provider:plone.abovecontentbody" />
-
 
         <p>
             <a href=""
