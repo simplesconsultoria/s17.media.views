@@ -9,10 +9,9 @@
     <metal:javascriptslot fill-slot="javascript_head_slot" tal:define="navroot context/@@plone_portal_state/navigation_root_url">
         <script language="JavaScript">
             $(document).ready(function() {
-                // install flowplayer into container
+                /* install flowplayer into container */
                 flowplayer("audio", "++resource++s17.media.views/flowplayer/flowplayer-3.2.7.swf", {
-
-	                // fullscreen button not needed here
+	                /* fullscreen button not needed here */
 	                plugins: {
 		                controls: {
 			                fullscreen: false,
@@ -20,11 +19,10 @@
 			                autoHide: false
 		                }
 	                },
-
 	                clip: {
 		                autoPlay: false,
-
-		                // optional: when playback starts close the first audio playback
+		                /* XXX: do we really need this here? */
+		                /* optional: when playback starts close the first audio playback */
 		                onBeforeBegin: function() {
 			                $f("player").close();
 		                }
@@ -35,14 +33,44 @@
     </metal:javascriptslot>
 </head>
 <body>
-<metal:main fill-slot="main">
-    <tal:main-macro metal:define-macro="main">
-    <a href=""
-       style="display:block;width:750px;height:30px;"
-	   id="audio"
-	   tal:attributes="href python:context.absolute_url()+'?e=.mp3'">
-    </a>
+<div metal:fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+           tal:define="kssClassesView context/@@kss_field_decorator_view;
+                       getKssClasses nocall:kssClassesView/getKssClassesInlineEditable">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 class="documentFirstHeading">
+            <metal:field use-macro="python:here.widget('title', mode='view')">
+            Title
+            </metal:field>
+        </h1>
+
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+        <p class="documentDescription">
+            <metal:field use-macro="python:here.widget('description', mode='view')">
+            Description
+            </metal:field>
+        </p>
+
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+
+        <p>
+            <a href=""
+               style="display:block;width:750px;height:30px;"
+	           id="audio"
+	           tal:attributes="href python:context.absolute_url()+'?e=.mp3'">
+            </a>
+        </p>
+
+        <div metal:use-macro="here/document_relateditems/macros/relatedItems">
+            show related items if they exist
+        </div>
+
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+
     </tal:main-macro>
-</metal:main>
+</div>
 </body>
 </html>
