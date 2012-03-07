@@ -1,27 +1,34 @@
+# -*- coding:utf-8 -*-
+
 from setuptools import setup, find_packages
 import os
 
-version = '0.1'
+version = '1.0'
+long_description = open("README.rst").read() + "\n" + \
+                   open(os.path.join("docs", "INSTALL.txt")).read() + "\n" + \
+                   open(os.path.join("docs", "CREDITS.txt")).read() + "\n" + \
+                   open(os.path.join("docs", "HISTORY.txt")).read()
 
 setup(name='s17.media.views',
       version=version,
       description="Media views for multimedia files",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "INSTALL.txt")).read() + "\n" +
-                       open(os.path.join("docs", "CREDITS.txt")).read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      long_description=long_description,
       classifiers=[
         "Development Status :: 3 - Alpha",
+        "Environment :: Web Environment",
+        "Framework :: Plone",
         "Framework :: Plone :: 4.1",
+        "Intended Audience :: End Users/Desktop",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Operating System :: OS Independent",
         "Programming Language :: JavaScript",
         "Programming Language :: Python",
+        "Programming Language :: Python :: 2.6",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
       keywords='audio video flash multimedia',
-      author='Simples Consultoria',
-      author_email='products@simplesconsultoria.com.br',
+      author='Silvestre Huens',
+      author_email='s.huens@gmail.com',
       url='http://www.simplesconsultoria.com.br',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
