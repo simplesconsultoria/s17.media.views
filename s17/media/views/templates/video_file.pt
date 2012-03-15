@@ -12,8 +12,7 @@
                 flowplayer("player", "++resource++s17.media.views/flowplayer/flowplayer-3.2.7.swf", {
 	                clip: {
 		                autoPlay: false,
-		                }
-	                }
+		            }
                 });
             });
         </script>

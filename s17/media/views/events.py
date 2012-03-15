@@ -31,7 +31,7 @@ def set_media_modification_layout(obj, event):
     layout = obj.getLayout()
     ext = obj.getFilename().split('.')[-1].lower()
     if ct:
-        if 'video' in ct and layout != 'video_file':
+        if 'video' in ct:
             obj.setLayout('video_file')
             if IAudio.providedBy(obj):
                 noLongerProvides(obj, IAudio)
@@ -42,7 +42,7 @@ def set_media_modification_layout(obj, event):
             if not IVideo.providedBy(obj):
                 alsoProvides(obj, IVideo)
 
-        elif 'audio' in ct and ext == 'mp3' and layout != 'audio_file':
+        elif 'audio' in ct and ext == 'mp3':
             obj.setLayout('audio_file')
             if IVideo.providedBy(obj):
                 noLongerProvides(obj, IVideo)
@@ -53,7 +53,7 @@ def set_media_modification_layout(obj, event):
             if not IAudio.providedBy(obj):
                 alsoProvides(obj, IAudio)
 
-        elif 'flash' in ct and layout != 'flash_file':
+        elif 'flash' in ct:
             obj.setLayout('flash_file')
             if IVideo.providedBy(obj):
                 noLongerProvides(obj, IVideo)
