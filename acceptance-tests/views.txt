@@ -1,0 +1,51 @@
+*** Settings ***
+
+Resource  plone.txt
+
+Suite Setup  Setup
+
+*** Variables ***
+
+*** Test cases ***
+
+Test Add Audio File
+    Goto Homepage
+    Add File  ${PATH}/test.mp3
+    Page Should Contain Element  css=object#audio_api
+    Remove File  test.mp3
+
+Test Add Video File
+    Goto Homepage
+    Add File  ${PATH}/test.avi
+    Page Should Contain Element  css=object#player_api
+    Remove File  test.avi
+
+Test Add Flash File
+    Goto Homepage
+    Add File  ${PATH}/test.flv
+    Page Should Contain Element  css=object#player_api
+    Remove File  test.flv
+
+*** Keywords ***
+
+Setup
+    Log In  admin  admin
+
+Add File
+    [arguments]  ${file}
+
+    Open Add New Menu
+    Click Link  css=a#file
+    Page Should Contain  Add File
+    Choose File  css=input#file_file  ${file}
+    Click Button  Save
+    Page Should Contain  Changes saved
+
+Remove File
+    [arguments]  ${title}
+
+    Click Link  ${title}
+    Click Delete Action
+    Wait Until Page Contains  Do you really want to delete this item?
+    Click Button  Delete
+
