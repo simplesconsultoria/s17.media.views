@@ -1,10 +1,10 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
-from setuptools import setup, find_packages
 import os
+from setuptools import setup, find_packages
 
 version = '1.0'
-long_description = open("README.rst").read() + "\n" + \
+long_description = open("README.txt").read() + "\n" + \
                    open(os.path.join("docs", "INSTALL.txt")).read() + "\n" + \
                    open(os.path.join("docs", "CREDITS.txt")).read() + "\n" + \
                    open(os.path.join("docs", "HISTORY.txt")).read()
@@ -18,6 +18,7 @@ setup(name='s17.media.views',
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: 4.1",
+        "Framework :: Plone :: 4.2",
         "Intended Audience :: End Users/Desktop",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Operating System :: OS Independent",

@@ -1,12 +1,10 @@
 Contributors
 ------------
 
-* Silvestre Huens (s.huens@gmail.com)
-
-* João S. O. Bueno (jsbueno@python.org.br)
-
-* Héctor Velarde (hector.velarde@gmail.com)
-
-* Thiago Tamosauskas (thiago@simplesconsultoria.com.br)
+- Silvestre Huens
+- João S. O. Bueno
+- Héctor Velarde
+- Thiago Tamosauskas
 
 Development sponsored in part by Simples Consultoria.
+
