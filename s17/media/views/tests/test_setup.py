@@ -10,6 +10,10 @@ from plone.app.testing import setRoles
 from s17.media.views.config import PROJECTNAME
 from s17.media.views.testing import INTEGRATION_TESTING
 
+JAVASCRIPTS = ["++resource++s17.media.views/flowplayer/flowplayer-3.2.6.min.js",
+               "++resource++s17.media.views/main.js",
+              ]
+
 
 class TestInstall(unittest.TestCase):
     """Ensure product is properly installed
@@ -20,11 +24,15 @@ class TestInstall(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.qi = getattr(self.portal, 'portal_quickinstaller')
+        self.ps = getattr(self.portal, 'portal_javascripts')
 
     def test_installed(self):
         self.assertTrue(self.qi.isProductInstalled(PROJECTNAME),
                         '%s not installed' % PROJECTNAME)
 
+    def test_jsregistry(self):
+        for js in JAVASCRIPTS:
+            self.assertIn(js, self.ps.getResourceIds())
 
 class TestUninstall(unittest.TestCase):
     """Ensure product is properly uninstalled
