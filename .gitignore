@@ -3,8 +3,9 @@
 *.mo
 *.pyc
 .installed.cfg
-log.html
 .mr.developer.cfg
+library-settings.txt
+log.html
 output.xml
 report.html
 selenium*
