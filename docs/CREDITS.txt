@@ -5,6 +5,7 @@ Contributors
 - João S. O. Bueno
 - Héctor Velarde
 - Thiago Tamosauskas
+- Gustavo Lepri
 
 Development sponsored in part by Simples Consultoria.
 
