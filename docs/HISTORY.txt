@@ -7,8 +7,9 @@ Changelog
 - tests for views and tests included [lepri]
 - flash file for tests added [lepri]
 
+
 1.0b1 (2012-05-21)
 ------------------
 
-- fixed bug in the event when a file was edited and fixed bug in the video template [lepri]
+- Initial release.
 
